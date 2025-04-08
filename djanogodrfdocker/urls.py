@@ -26,5 +26,6 @@ router.register(r'articles', views.ArticleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('example/', views.ExampleView.as_view(), name='example'),
     path('admin/', admin.site.urls),
 ]

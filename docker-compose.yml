@@ -9,13 +9,13 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - drf_db
     environment:
       - DEBUG=1
 
-  db:
+  drf_db:
     image: postgres:14
-    container_name: postgres_db
+    container_name: drf_db
     restart: always
     environment:
       POSTGRES_USER: postgres
