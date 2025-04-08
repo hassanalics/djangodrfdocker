@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from .models import Reporter, Article
 from .serializers import ReporterSerializer, ArticleSerializer
 
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -16,7 +17,7 @@ class ArticleViewSet(viewsets.ModelViewSet):  # ViewSet for Book model
     serializer_class = ArticleSerializer
 
 class ExampleView(APIView):
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
